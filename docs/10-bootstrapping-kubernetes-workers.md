@@ -22,7 +22,7 @@ On `controlplane01`:
 [//]: # (host:controlplane01)
 
 ```bash
-NODE01=$(dig +short node01)
+NODE01=$(getent ahosts node01 | awk '{ print $1 ; exit }')
 ```
 
 ```bash
@@ -59,7 +59,7 @@ When generating kubeconfig files for Kubelets the client certificate matching th
 Get the kube-api server load-balancer IP.
 
 ```bash
-LOADBALANCER=$(dig +short loadbalancer)
+LOADBALANCER=$(getent ahosts loadbalancer | awk '{ print $1 ; exit }')
 ```
 
 Generate a kubeconfig file for the first worker node.
@@ -190,7 +190,7 @@ clusterDomain: cluster.local
 clusterDNS:
   - ${CLUSTER_DNS}
 cgroupDriver: systemd
-resolvConf: /run/systemd/resolve/resolv.conf
+resolvConf: /etc/resolv.conf
 runtimeRequestTimeout: "15m"
 tlsCertFile: /var/lib/kubernetes/pki/${HOSTNAME}.crt
 tlsPrivateKeyFile: /var/lib/kubernetes/pki/${HOSTNAME}.key
