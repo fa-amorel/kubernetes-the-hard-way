@@ -25,13 +25,13 @@ You can perform this step with [tmux](01-prerequisites.md#running-commands-in-pa
 1. Set up the required kernel modules and make them persistent
     ```bash
     {
-        cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+    cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
     overlay
     br_netfilter
     EOF
 
-        sudo modprobe overlay
-        sudo modprobe br_netfilter
+    sudo modprobe overlay
+    sudo modprobe br_netfilter
     }
     ```
 

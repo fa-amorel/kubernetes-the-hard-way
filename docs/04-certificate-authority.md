@@ -403,7 +403,7 @@ for instance in controlplane01 controlplane02; do
     ${instance}:~/
 done
 
-for instance in node01 node02 ; do
+for instance in kubernetes_node01 kubernetes_node02 ; do
   scp ca.crt kube-proxy.crt kube-proxy.key ${instance}:~/
 done
 }
